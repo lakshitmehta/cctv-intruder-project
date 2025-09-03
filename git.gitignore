@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Generated images
+intruder_*.jpg
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
