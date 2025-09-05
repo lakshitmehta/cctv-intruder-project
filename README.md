@@ -35,7 +35,7 @@ Installation
 
 Clone the repository
 
-git clone https://github.com/YOUR-USERNAME/cctv-intruder-detection.git
+git clone https://github.com/lakshitmehta/cctv-intruder-detection.git
 cd cctv-intruder-detection
 
 
