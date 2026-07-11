@@ -1,0 +1,19 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Generated files
+intruder_*.jpg
+ml_evaluation_report.txt
+model_comparison.txt
+pca_plot.png
+
+# Dataset (keep private)
+authorized_faces/
+intruder_faces/
