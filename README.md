@@ -1,138 +1,313 @@
-CCTV Intruder Detection System
+# CCTV Intruder Detection System
 
-A real-time CCTV-based intruder detection system built with Python, OpenCV, and InsightFace.
-The system detects faces from a live camera feed, compares them against authorized faces, and automatically sends an email alert with an attached image if an intruder is detected.
+> A real-time AI-powered CCTV Intruder Detection System that performs face authentication using InsightFace embeddings, detects unauthorized individuals, and automatically sends email alerts with captured intrusion images.
 
-Features
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green)
+![InsightFace](https://img.shields.io/badge/InsightFace-Face%20Recognition-orange)
+![License](https://img.shields.io/badge/License-MIT-red)
 
-Real-time video stream with multi-threaded capture (low latency).
+---
+## ⭐ Key Highlights
 
-Face recognition using InsightFace (GPU accelerated).
+- 🎯 95%+ Face Recognition Accuracy
+- 🧠 512-D InsightFace Face Embeddings
+- 🤖 Evaluated 5 Machine Learning Models
+- ⚡ ~40% Faster Inference using Optimizations
+- 📧 Automated Email Alerts with Captured Intruder Images
+---
 
-Authorized user verification via stored embeddings.
+## 📸 Demo
 
-Intruder detection with automatic email alerts and image attachments.
+### Real-Time Intruder Detection
 
-Intruder photo saving handled in background threads to avoid blocking.
+The animation below demonstrates the complete detection pipeline, including authorized user verification, intruder detection, and automated email alerts.
 
-Optimized performance using frame skipping and scaled-down detection.
+<p align="center">
+<img src="images/demo.gif" width="850">
+</p>
 
-Requirements
 
-Python 3.8+
+---
 
-A working webcam or IP camera
+## 📧 Email Alert
+The system automatically sends an email notification containing the captured intruder image whenever an unauthorized individual is detected.
 
-CUDA-enabled GPU (recommended for performance)
+<p align="center">
+<img src="images/email_alert.png" width="850">
+</p>
 
-Python dependencies (see requirements.txt):
+---
 
-opencv-python
-insightface
-numpy
+## 📊 PCA Visualization
 
-Installation
+The visualization below shows the PCA projection of the generated face embeddings used for model evaluation.
+
+<p align="center">
+<img src="images/pca_plot.png" width="850">
+</p>
+
+---
+
+# 🚀 Features
+
+- Real-time CCTV monitoring
+- Face authentication using **512-dimensional InsightFace embeddings**
+- Cosine similarity-based face verification
+- Multi-threaded video capture for low-latency processing
+- Automatic intruder detection
+- Automatic email alerts with captured intrusion images
+- Duplicate intruder suppression
+- Frame skipping for faster inference
+- Image downscaling for improved performance
+- GPU acceleration support
+- Machine Learning model evaluation
+- PCA visualization of face embeddings
+
+---
+
+# 🏗️ System Workflow
+
+```text
+Camera
+   │
+   ▼
+Capture Frame
+   │
+   ▼
+Detect Faces
+   │
+   ▼
+Generate 512-D Face Embeddings
+   │
+   ▼
+Cosine Similarity Comparison
+   │
+ ┌─┴────────────┐
+ │              │
+ ▼              ▼
+Authorized   Intruder
+                │
+                ▼
+      Save Intruder Image
+                │
+                ▼
+      Send Email Notification
+```
+
+---
+
+# 🧠 Machine Learning Model Evaluation
+
+The extracted **512-dimensional face embeddings** were evaluated using multiple Machine Learning classifiers.
+
+### Models Evaluated
+
+- K-Nearest Neighbors (KNN)
+- Logistic Regression
+- Linear Support Vector Machine (SVM)
+- Random Forest
+- Gaussian Naive Bayes
+
+### Evaluation Metrics
+
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+
+Principal Component Analysis (PCA) was also used to visualize the distribution of face embeddings in a lower-dimensional space.
+
+---
+
+# ⚡ Performance Optimizations
+
+- Multi-threaded webcam streaming
+- Webcam buffer optimization
+- Frame skipping
+- Image downscaling
+- Cosine similarity matching
+- Duplicate intruder suppression
+- Background email processing
+- GPU acceleration support
+
+---
+
+# 🛠️ Technologies Used
+
+| Category | Technologies |
+|----------|--------------|
+| Programming Language | Python |
+| Computer Vision | OpenCV, InsightFace |
+| Machine Learning | Scikit-learn, KNN, Logistic Regression, SVM, Random Forest, Gaussian Naive Bayes, PCA |
+| Libraries | NumPy, Matplotlib |
+| Networking | SMTP |
+| Concurrency | Python Threading |
+
+---
+
+# 📂 Project Structure
+
+```text
+cctv-intruder-project
+│
+├── authorized_faces/
+│   └── README.md
+│
+├── images/
+│   ├── demo.gif
+│   ├── email_alert.png
+│   └── pca_plot.png
+│
+├── intruder_faces/
+│   └── README.md
+│
+├── .gitignore
+├── LICENSE
+├── main.py
+├── ml_evaluation_report.txt
+├── model_comparison.txt
+├── README.md
+└── requirements.txt
+```
+
+---
+
+# ⚙️ Installation
 
 Clone the repository
 
-git clone https://github.com/lakshitmehta/cctv-intruder-detection.git
-cd cctv-intruder-detection
+```bash
+git clone https://github.com/lakshitmehta/cctv-intruder-project.git
 
+cd cctv-intruder-project
+```
 
-Create and activate a virtual environment (recommended)
+Create a virtual environment
 
+### Windows
+
+```bash
 python -m venv venv
-source venv/bin/activate     # Linux/Mac
-venv\Scripts\activate        # Windows
+venv\Scripts\activate
+```
 
+### Linux / macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
 Install dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-Setup
+---
 
-Authorized faces
+# 🔐 Environment Variables
 
-Create a folder named authorized_faces/ in the project root.
+Create a `.env` file in the project root.
 
-Add clear, front-facing images of authorized people (JPG/PNG).
+```env
+EMAIL=your_email@gmail.com
+EMAIL_PASSWORD=your_app_password
+RECEIVER_EMAIL=receiver_email@gmail.com
+```
 
-Email configuration
+---
 
-The script uses Gmail SMTP for alerts.
+# 👤 Setting Up Authorized Faces
 
-Enable 2-Step Verification on your Gmail and create an App Password.
+Before running the project, create a folder named:
 
-Replace credentials in main.py:
+```text
+authorized_faces
+```
 
-msg['From'] = "your-email@gmail.com"
-msg['To'] = "receiver-email@gmail.com"
-smtp.login("your-email@gmail.com", "YOUR_APP_PASSWORD")
+Add one or more clear front-facing images of every authorized person.
 
-Usage
+Example:
 
-Run the system:
+```text
+authorized_faces/
+├── person1.jpg
+├── person2.jpg
+├── person3.jpg
+```
 
+### Recommended Image Guidelines
+
+- Clear front-facing image
+- Good lighting
+- One face per image
+- JPG, JPEG or PNG format
+- Avoid sunglasses and face masks
+
+The application automatically extracts face embeddings from these images during startup. Any face that does not sufficiently match these embeddings is classified as an intruder.
+
+---
+
+# ▶️ Running the Project
+
+```bash
 python main.py
+```
 
+Press **Q** to quit.
 
-Controls:
+---
 
-Press Q to quit the CCTV window.
+# 📈 Experimental Results
 
-Output:
+| Metric | Value |
+|---------|------:|
+| Face Recognition Accuracy | **95%+** |
+| Face Embedding Dimension | **512** |
+| Machine Learning Models Evaluated | **5** |
+| Inference Latency Reduction | **~40%** |
+| Similarity Metric | **Cosine Similarity** |
 
-Authorized users → Green box labeled Authorized.
+---
 
-Unknown faces → Red box labeled Intruder.
+# 🔮 Future Improvements
 
-Intruder triggers:
+- Multi-camera support
+- Cloud storage integration
+- Telegram / WhatsApp notifications
+- Web dashboard
+- Mobile application
+- Face recognition logs
+- Attendance management
+- Database integration
 
-Image saved locally (intruder_X.jpg)
+---
 
-Email alert with attached photo
+# 🤝 Contributing
 
-Configuration
+Contributions, feature requests, and improvements are welcome.
 
-The following parameters in main.py can be adjusted:
+Feel free to fork the repository and submit a Pull Request.
 
-DETECTION_THRESHOLD → Face similarity threshold (default: 0.5)
+---
 
-EMAIL_DELAY → Seconds before sending an alert (default: 2)
+# 👨‍💻 Author
 
-CLEANUP_TIMEOUT → Forget intruders after inactivity (default: 10)
+**Lakshit Mehta**
 
-SCALE_FACTOR → Image downscaling for faster detection (default: 3)
+📧 Email:
+lakshitmehta1work@gmail.com
 
-SKIP_FRAMES → Process every Nth frame (default: 6)
+💻 GitHub:
+https://github.com/lakshitmehta
 
-Project Structure
-cctv-intruder-detection/
-│── main.py               # Main program
-│── authorized_faces/     # Store authorized face images here
-│── intruder_X.jpg        # Intruder snapshots (generated automatically)
-│── requirements.txt      # Python dependencies
-│── README.md             # Project documentation
+🔗 LinkedIn:
+(https://www.linkedin.com/in/lakshit-mehta-4087b437a/)
 
-Future Work
+---
 
-Support for multiple/IP cameras
+# 📄 License
 
-Web-based monitoring dashboard
-
-Push notifications (Telegram/WhatsApp)
-
-Cloud storage for intruder images
-
-Author
-
-Lakshit Mehta
-
-Email: lakshitmehta1work@gmail.com
-
-GitHub: https://github.com/lakshitmehta
-
-License
-
-This project is licensed under the MIT License. You are free to use, modify, and distribute it.
+This project is licensed under the MIT License.

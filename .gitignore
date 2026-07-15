@@ -1,19 +1,33 @@
-# Environment variables
+# ==========================
+# Environment Variables
+# ==========================
 .env
 
-# Python cache
+# ==========================
+# Python Cache
+# ==========================
 __pycache__/
-*.pyc
+*.py[cod]
 
+# ==========================
 # VS Code
+# ==========================
 .vscode/
 
-# Generated files
+# ==========================
+# Generated Output Files
+# ==========================
 intruder_*.jpg
-ml_evaluation_report.txt
-model_comparison.txt
-pca_plot.png
 
-# Dataset (keep private)
-authorized_faces/
-intruder_faces/
+# ==========================
+# Keep authorized_faces folder,
+# but ignore all images
+# ==========================
+authorized_faces/*.jpg
+authorized_faces/*.jpeg
+authorized_faces/*.png
+
+# ==========================
+# Keep intruder_faces folder
+# (do NOT ignore it)
+# ==========================
