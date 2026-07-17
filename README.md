@@ -1,4 +1,4 @@
-# CCTV Intruder Detection System
+# AI-Powered CCTV Intruder Detection System
 
 > A real-time AI-powered CCTV Intruder Detection System that performs face authentication using InsightFace embeddings, detects unauthorized individuals, and automatically sends email alerts with captured intrusion images.
 
